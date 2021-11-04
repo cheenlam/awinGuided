@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/all.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/vue_3.2.19.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>awinGuided</title>
 </head>
 
@@ -19,7 +19,7 @@
             <div class="section section_1">
                 <div class="top">
                     <div class="logo">
-                        <img src="images/background/topLogo.png">
+                        <img src="images/background/topLogo.webp">
                     </div>
 
                     <div class="btnBox">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="aboutMe" data-aos="fade-up" data-aos-duration="1000">
                         <div class="theme" data-aos="fade-right" data-aos-duration="1000">
-                            <img src="images/theme/theme_01.png">
+                            <img src="images/theme/webp/theme_01.webp">
                         </div>
                         <div class="txtBox" data-aos="fade-left" data-aos-duration="1000">
                             <div class="aboutTxt">
@@ -89,18 +89,26 @@
                             </div>
                         </div>
                         <div class="theme">
-                            <img src="images/theme/theme_02.png">
+                            <img src="images/theme/webp/theme_02.webp">
+                            <div class="carousel" id="carousel_01">
+                                <img src="images/theme/webp/theme_02.webp">
+                                <img src="images/theme/webp/theme_03.webp" style="display: none;">
+                            </div>
                             <p>Ngọc Mai</p>
                         </div>
                     </li>
 
                     <li data-aos="fade-right" data-aos-duration="1000">
                         <div class="theme">
-                            <img src="images/theme/theme_03.png">
+                            <img src="images/theme/webp/theme_06.webp">
+                            <div class="carousel" id="carousel_02">
+                                <img src="images/theme/webp/theme_06.webp">
+                                <img src="images/theme/webp/theme_07.webp" style="display: none;">
+                            </div>
                             <p>Sòng bài Casino</p>
                         </div>
 
-                        <div class="narrate ">
+                        <div class="narrate">
                             <div class="order">
                                 <img src="images/icon/nb_02.png">
                             </div>
@@ -203,7 +211,7 @@
             </div>
         </div>
 
-        <div class="goTop" @click="goTop()">
+        <div class="goTop" id="goTop" onclick="goTop()">
             <div class="icon">
                 <img src="images/icon/arrow-top.png">
             </div>
@@ -212,22 +220,65 @@
     </div>
 
     <script>
-        Vue.createApp({
-            data() {
-                return {};
-            },
-            methods: {
-                goTop() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: "smooth"
-                    });
-                }
-            },
-            mounted() {
+        function goTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
 
-            },
-        }).mount("#indexBox");
+        let nb01 = 2;
+        let nb02 = 3;
+        let switch01 = false
+
+        let nb03 = 6;
+        let nb04 = 7;
+        let switch02 = false
+
+        setInterval(function() {
+            s1();
+            s2();
+        }, 3000)
+
+
+        function s1() {
+            switch01 = !switch01
+            $('#carousel_01 img:eq(1)').attr("src", `images/theme/webp/theme_0${nb02}.webp`);
+            $('#carousel_01 img:eq(0)').attr("src", `images/theme/webp/theme_0${nb01}.webp`);
+
+            if (switch01) {
+                $('#carousel_01 img:eq(1)').css('display', 'none')
+                $('#carousel_01 img:eq(0)').fadeOut(2000);
+                $('#carousel_01 img:eq(1)').fadeIn(2000);
+                nb01 == 5 ? nb01 = 2 : nb01++
+
+            } else {
+                $('#carousel_01 img:eq(0)').css('display', 'none')
+                $('#carousel_01 img:eq(1)').fadeOut(2000);
+                $('#carousel_01 img:eq(0)').fadeIn(2000);
+                nb02 == 5 ? nb02 = 2 : nb02++
+            }
+        }
+
+        function s2() {
+            switch02 = !switch02
+            $('#carousel_02 img:eq(1)').attr("src", `images/theme/webp/theme_0${nb04}.webp`);
+            $('#carousel_02 img:eq(0)').attr("src", `images/theme/webp/theme_0${nb03}.webp`);
+
+            if (switch02) {
+                $('#carousel_02 img:eq(1)').css('display', 'none')
+                $('#carousel_02 img:eq(0)').fadeOut(2000);
+                $('#carousel_02 img:eq(1)').fadeIn(2000);
+                nb03 == 9 ? nb03 = 6 : nb03++
+
+            } else {
+                $('#carousel_02 img:eq(0)').css('display', 'none')
+                $('#carousel_02 img:eq(1)').fadeOut(2000);
+                $('#carousel_02 img:eq(0)').fadeIn(2000);
+                nb04 == 9 ? nb04 = 6 : nb04++
+            }
+        }
+
 
         AOS.init();
     </script>
