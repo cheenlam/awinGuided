@@ -177,6 +177,9 @@ body {
                 line-height: 1.5rem;
                 color: #fff;
             }
+            .btn{
+                max-width: 300px;
+            }
         }
     }
 
@@ -300,6 +303,16 @@ body {
                     @include pos(tl,0) 
                 }
             }
+            .themeTxt{
+                width: 100%;
+                position: absolute;
+                @include pos(bl,-20px,0);
+                p{
+                    width: 100%;
+                    position: absolute;
+                    @include pos(bl,0);
+                }
+            }
         }
     }
 
@@ -415,7 +428,6 @@ body {
                 position: relative;
                 display: flex;
                 align-items: center;
-
                 @include rwd(850) {
                     width: 100%;
                 }
@@ -429,25 +441,30 @@ body {
                         color: #a3987a;
                     }
                 }
-
-                &::after {
-                    content: "";
-                    width: 6rem;
-                    height: 3px;
-                    margin: auto;
-                    border-radius: 10px;
-                    background: linear-gradient(90deg, transparent, #b28b49, transparent);
-                    transform: rotate(-70deg) scaleY(0.5);
-                    position: absolute;
-                    @include pos(tbl,0);
-                }
             }
 
             .txtBox{
+                position: relative;
                 transform: skewX(-16deg);
                 padding-right: 50px;
                 @include rwd(500) {
                     padding-right: 20px;
+                }  
+                &::after {
+                    content: "";
+                    width: 30%;
+                    height: 3px;
+                    margin: auto;
+                    border-radius: 10px;
+                    background: linear-gradient(90deg, transparent, #b28b49, transparent);
+                    transform: rotate(-84deg) scaleY(0.5);
+                    position: absolute;
+                    @include pos(tbl,0,0,-19%);
+
+                    @include rwd(850) {
+                        width: 7rem;
+                        @include pos(tbl,0,0,-70px);
+                    }
                 }
             }
             .main {

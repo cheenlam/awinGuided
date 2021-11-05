@@ -23,9 +23,11 @@
                     </div>
 
                     <div class="btnBox">
-                        <div class="btn_linear_c1 btn">
-                            <div class="btn_cnt">Đăng ký</div>
-                        </div>
+                        <a href="http://www.awin77c.com/m56777-10-1">
+                            <div class="btn_linear_c1 btn">
+                                <div class="btn_cnt">Đăng ký</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
@@ -62,9 +64,11 @@
                             </div>
                             <div class="receive">
                                 <div class="title">Liên lạc với CSKH để nhận khuyến mãi</div>
-                                <div class="btn_linear_c2 btn">
-                                    <div class="btn_cnt">Nhấn vào nhận thưởng</div>
-                                </div>
+                                <a href="https://chat.ouwinke.com/?w=E4F898E6BD2268E8&l=vi">
+                                    <div class="btn_linear_c2 btn">
+                                        <div class="btn_cnt">Nhấn vào nhận thưởng</div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -92,9 +96,10 @@
                             <img src="images/theme/webp/theme_02.webp">
                             <div class="carousel" id="carousel_01">
                                 <img src="images/theme/webp/theme_02.webp">
-                                <img src="images/theme/webp/theme_03.webp" style="display: none;">
                             </div>
-                            <p>Ngọc Mai</p>
+                            <div class="themeTxt" id="themeTxt_01">
+                                <p>Ngọc Ma</p>
+                            </div>
                         </div>
                     </li>
 
@@ -103,9 +108,10 @@
                             <img src="images/theme/webp/theme_06.webp">
                             <div class="carousel" id="carousel_02">
                                 <img src="images/theme/webp/theme_06.webp">
-                                <img src="images/theme/webp/theme_07.webp" style="display: none;">
                             </div>
-                            <p>Sòng bài Casino</p>
+                            <div class="themeTxt" id="themeTxt_02">
+                                <p>Sòng bài Casino</p>
+                            </div>
                         </div>
 
                         <div class="narrate">
@@ -192,9 +198,11 @@
                     </div>
 
                     <div class="btnBox">
-                        <div class="btn_linear_c1 btn">
-                            <div class="btn_cnt">Tham gia cùng chúng tôi ngay nhé!</div>
-                        </div>
+                        <a href="http://www.awin77c.com/m56777-10-1">
+                            <div class="btn_linear_c1 btn">
+                                <div class="btn_cnt">Tham gia cùng chúng tôi ngay nhé!</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -228,57 +236,41 @@
         }
 
         let nb01 = 2;
-        let nb02 = 3;
-        let switch01 = false
-
-        let nb03 = 6;
-        let nb04 = 7;
-        let switch02 = false
+        let nb02 = 6;
+        let theme01 = ['Ngọc Ma', 'Minh-Trang', 'Thanh-Thủy', 'Thu-Hiền'];
+        let theme02 = ['Sòng bài Casino', 'Câu cá', 'Slot game', 'Thể thao']
 
         setInterval(function() {
             s1();
             s2();
-        }, 3000)
-
+        }, 5000)
 
         function s1() {
-            switch01 = !switch01
-            $('#carousel_01 img:eq(1)').attr("src", `images/theme/webp/theme_0${nb02}.webp`);
-            $('#carousel_01 img:eq(0)').attr("src", `images/theme/webp/theme_0${nb01}.webp`);
+            let nbNext = nb01 + 1 == 6 ? 2 : nb01 + 1
+            nb01 == 5 ? nb01 = 2 : nb01++
+                $('#carousel_01').append(`<img src="images/theme/webp/theme_0${nbNext}.webp" style="display: none;">`)
+            $('#themeTxt_01').append(`<p style="display: none;">${theme01[nb01-2]}</p>`)
 
-            if (switch01) {
-                $('#carousel_01 img:eq(1)').css('display', 'none')
-                $('#carousel_01 img:eq(0)').fadeOut(2000);
-                $('#carousel_01 img:eq(1)').fadeIn(2000);
-                nb01 == 5 ? nb01 = 2 : nb01++
+            $('#carousel_01 img:eq(0),#themeTxt_01 p:eq(0)').fadeOut(2500);
+            $('#carousel_01 img:eq(1),#themeTxt_01 p:eq(1)').fadeIn(2500);
 
-            } else {
-                $('#carousel_01 img:eq(0)').css('display', 'none')
-                $('#carousel_01 img:eq(1)').fadeOut(2000);
-                $('#carousel_01 img:eq(0)').fadeIn(2000);
-                nb02 == 5 ? nb02 = 2 : nb02++
-            }
+            setTimeout(function() {
+                $('#carousel_01 img:eq(0),#themeTxt_01 p:eq(0)').remove()
+            }, 2500)
         }
 
         function s2() {
-            switch02 = !switch02
-            $('#carousel_02 img:eq(1)').attr("src", `images/theme/webp/theme_0${nb04}.webp`);
-            $('#carousel_02 img:eq(0)').attr("src", `images/theme/webp/theme_0${nb03}.webp`);
+            let nbNext = nb02 + 1 == 10 ? 6 : nb02 + 1
+            nb02 == 9 ? nb02 = 6 : nb02++
+                $('#carousel_02').append(`<img src="images/theme/webp/theme_0${nbNext}.webp" style="display: none;">`)
+            $('#themeTxt_02').append(`<p style="display: none;">${theme02[nb02-6]}</p>`)
 
-            if (switch02) {
-                $('#carousel_02 img:eq(1)').css('display', 'none')
-                $('#carousel_02 img:eq(0)').fadeOut(2000);
-                $('#carousel_02 img:eq(1)').fadeIn(2000);
-                nb03 == 9 ? nb03 = 6 : nb03++
-
-            } else {
-                $('#carousel_02 img:eq(0)').css('display', 'none')
-                $('#carousel_02 img:eq(1)').fadeOut(2000);
-                $('#carousel_02 img:eq(0)').fadeIn(2000);
-                nb04 == 9 ? nb04 = 6 : nb04++
-            }
+            $('#carousel_02 img:eq(0),#themeTxt_02 p:eq(0)').fadeOut(2500);
+            $('#carousel_02 img:eq(1),#themeTxt_02 p:eq(1)').fadeIn(2500);
+            setTimeout(function() {
+                $('#carousel_02 img:eq(0),#themeTxt_02 p:eq(0)').remove()
+            }, 2500)
         }
-
 
         AOS.init();
     </script>
